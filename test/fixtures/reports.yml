@@ -1,0 +1,21 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  kind: MyString
+  date: 2024-11-09
+  type: 
+  product: MyString
+  broker: MyText
+  quantity: 1
+  unit_price: 9.99
+  total_value: 9.99
+
+two:
+  kind: MyString
+  date: 2024-11-09
+  type: 
+  product: MyString
+  broker: MyText
+  quantity: 1
+  unit_price: 9.99
+  total_value: 9.99
