@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2024_11_09_171053) do
+ActiveRecord::Schema[8.0].define(version: 2024_11_09_171054) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -23,9 +23,11 @@ ActiveRecord::Schema[8.0].define(version: 2024_11_09_171053) do
     t.integer "quantity", null: false
     t.decimal "unit_price", precision: 8, scale: 2, null: false
     t.decimal "total_value", precision: 8, scale: 2, null: false
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["kind", "date", "report_type", "product", "broker", "quantity"], name: "idx_on_kind_date_report_type_product_broker_quantit_ef36d46f9d", unique: true
+    t.index ["user_id", "kind", "date", "report_type", "product", "broker", "quantity"], name: "idx_on_user_id_kind_date_report_type_product_broker_0a53e09fd6", unique: true
+    t.index ["user_id"], name: "index_reports_on_user_id"
   end
 
   create_table "sessions", force: :cascade do |t|
@@ -47,5 +49,6 @@ ActiveRecord::Schema[8.0].define(version: 2024_11_09_171053) do
     t.index ["email_address"], name: "index_users_on_email_address", unique: true
   end
 
+  add_foreign_key "reports", "users"
   add_foreign_key "sessions", "users"
 end

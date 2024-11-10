@@ -6,7 +6,7 @@ class ReportService
   def call
     Report.transaction do
       reports = Extract::Earnings.call(@input)
-      Report.upsert_all(reports, unique_by: [ :kind, :date, :report_type, :product, :broker, :quantity ])
+      Report.upsert_all(reports, unique_by: [ :kind, :date, :report_type, :product, :broker, :quantity, :user_id ])
     end
   end
 end

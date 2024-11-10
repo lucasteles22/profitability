@@ -9,10 +9,11 @@ class CreateReports < ActiveRecord::Migration[8.0]
       t.integer :quantity, null: false
       t.decimal :unit_price, null: false, precision: 8, scale: 2
       t.decimal :total_value, null: false, precision: 8, scale: 2
+      t.references :user, foreign_key: true
 
       t.timestamps
     end
 
-    add_index :reports, [ :kind, :date, :report_type, :product, :broker, :quantity ], unique: true
+    add_index :reports, [ :user_id, :kind, :date, :report_type, :product, :broker, :quantity ], unique: true
   end
 end
