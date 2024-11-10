@@ -5,10 +5,12 @@ class CreateReports < ActiveRecord::Migration[8.0]
       t.date :date, null: false
       t.string :report_type, null: false, limit: 100
       t.string :product, null: false, limit: 1000
-      t.text :broker, null: false
+      t.string :broker, null: false, limit: 200
       t.integer :quantity, null: false
       t.decimal :unit_price, null: false, precision: 8, scale: 2
       t.decimal :total_value, null: false, precision: 8, scale: 2
     end
+
+    add_index :reports, [ :kind, :date, :report_type, :product, :broker, :quantity ], unique: true
   end
 end

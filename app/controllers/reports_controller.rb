@@ -1,9 +1,8 @@
 class ReportsController < ActionController::API
   def create
-    response = Extract::Earnings.call(create_params.path)
+    ReportService.new(create_params.path).call
 
-    render status: 204 if response
-    render status: 422
+    render status: :created
   end
 
   def create_params

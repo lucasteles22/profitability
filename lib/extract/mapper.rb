@@ -11,11 +11,10 @@ module Extract
     VALOR_OPERACAO = 7
 
     def self.to_report(row)
-      p row
       Report.new(
         kind: row[ENTRADA_SAIDA],
         date: row[DATA].value,
-        type: row[MOVIMENTACAO],
+        report_type: row[MOVIMENTACAO],
         product: row[PRODUTO],
         broker: row[CORRETORA],
         quantity: row[QUANTIDADE].value,

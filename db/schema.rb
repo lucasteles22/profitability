@@ -17,12 +17,13 @@ ActiveRecord::Schema[8.0].define(version: 2024_11_09_171053) do
   create_table "reports", force: :cascade do |t|
     t.string "kind", limit: 50, null: false
     t.date "date", null: false
-    t.string "type", limit: 100, null: false
+    t.string "report_type", limit: 100, null: false
     t.string "product", limit: 1000, null: false
-    t.text "broker", null: false
+    t.string "broker", limit: 200, null: false
     t.integer "quantity", null: false
     t.decimal "unit_price", precision: 8, scale: 2, null: false
     t.decimal "total_value", precision: 8, scale: 2, null: false
+    t.index ["kind", "date", "report_type", "product", "broker", "quantity"], name: "idx_on_kind_date_report_type_product_broker_quantit_ef36d46f9d", unique: true
   end
 
   create_table "sessions", force: :cascade do |t|
