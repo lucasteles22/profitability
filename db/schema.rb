@@ -23,6 +23,8 @@ ActiveRecord::Schema[8.0].define(version: 2024_11_09_171053) do
     t.integer "quantity", null: false
     t.decimal "unit_price", precision: 8, scale: 2, null: false
     t.decimal "total_value", precision: 8, scale: 2, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["kind", "date", "report_type", "product", "broker", "quantity"], name: "idx_on_kind_date_report_type_product_broker_quantit_ef36d46f9d", unique: true
   end
 
