@@ -11,16 +11,16 @@ module Extract
     VALOR_OPERACAO = 7
 
     def self.to_report(row)
-      Report.new(
-        kind: row[ENTRADA_SAIDA],
+      {
+        kind: row[ENTRADA_SAIDA].value,
         date: row[DATA].value,
-        report_type: row[MOVIMENTACAO],
-        product: row[PRODUTO],
-        broker: row[CORRETORA],
+        report_type: row[MOVIMENTACAO].value,
+        product: row[PRODUTO].value,
+        broker: row[CORRETORA].value,
         quantity: row[QUANTIDADE].value,
         unit_price: row[PRECO_UNITARIO].value,
-        total_value: row[VALOR_OPERACAO].value,
-      )
+        total_value: row[VALOR_OPERACAO].value
+      }
     end
   end
 end

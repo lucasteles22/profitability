@@ -4,11 +4,9 @@ class ReportService
   end
 
   def call
-    reports = Extract::Earnings.call(@input)
     Report.transaction do
-      reports.each do |report|
-        report.save!
-      end
+      reports = Extract::Earnings.call(@input)
+      Report.upsert_all(reports, unique_by: [ :kind, :date, :report_type, :product, :broker, :quantity ])
     end
   end
 end
