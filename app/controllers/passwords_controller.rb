@@ -6,7 +6,11 @@ class PasswordsController < ApplicationController
   end
 
   def create
-    if user = User.find_by(email_address: params[:email_address])
+    if user = User.find_by(
+      email_address: params[:email_address],
+      first_name: params[:first_name],
+      last_name: params[:last_name])
+
       PasswordsMailer.reset(user).deliver_later
     end
 
