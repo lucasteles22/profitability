@@ -14,3 +14,21 @@
 #       methods: [:get, :post, :put, :patch, :delete, :options, :head]
 #   end
 # end
+Rails.application.config.middleware.insert_before 0, Rack::Cors do
+  origins = [
+    "localhost:3000",
+    "localhost:3001",
+    "staging.xyz.com",
+    "www.xyz.com"
+  ].freeze
+
+  allow do
+    origins origins
+    resource(
+      "*",
+      expose: [ "access-token", "expiry", "token-type", "Authorization" ],
+      headers: :any,
+      methods: [ :get, :patch, :put, :delete, :post, :options, :show ]
+    )
+  end
+end
