@@ -1,10 +1,16 @@
 class ReportsController < ActionController::API
   before_action :authenticate_user!
 
+  def index
+    reports = Report.order(report_date: :desc)
+
+    render :index, locals: { reports: reports }
+  end
+
   def create
     ReportService.new(create_params.path, current_user).()
 
-    render status: :created
+    head :created
   end
 
   def create_params

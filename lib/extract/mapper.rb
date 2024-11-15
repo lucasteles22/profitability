@@ -13,7 +13,7 @@ module Extract
     def self.to_report(row)
       {
         kind: row[ENTRADA_SAIDA].value,
-        date: row[DATA].value,
+        report_date: row[DATA].value,
         report_type: row[MOVIMENTACAO].value,
         product: row[PRODUTO].value,
         broker: row[CORRETORA].value,

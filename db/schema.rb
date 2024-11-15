@@ -16,7 +16,7 @@ ActiveRecord::Schema[8.0].define(version: 2024_11_12_171055) do
 
   create_table "reports", force: :cascade do |t|
     t.string "kind", limit: 50, null: false
-    t.date "date", null: false
+    t.date "report_date", null: false
     t.string "report_type", limit: 100, null: false
     t.string "product", limit: 1000, null: false
     t.string "broker", limit: 200, null: false
@@ -26,7 +26,7 @@ ActiveRecord::Schema[8.0].define(version: 2024_11_12_171055) do
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id", "kind", "date", "report_type", "product", "broker", "quantity"], name: "idx_on_user_id_kind_date_report_type_product_broker_0a53e09fd6", unique: true
+    t.index ["user_id", "kind", "report_date", "report_type", "product", "broker", "quantity"], name: "idx_on_user_id_kind_report_date_report_type_product_fc6cbc6bb0", unique: true
     t.index ["user_id"], name: "index_reports_on_user_id"
   end
 
