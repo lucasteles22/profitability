@@ -4,10 +4,21 @@ class BalanceService
   end
 
   def call
-    credit = Report.credit.with_user(@current_user).sum(:total_value)
-    debit = Report.debit.with_user(@current_user).sum(:total_value)
-    balance = credit - debit
+    user_report = Report.with_user(@current_user)
 
-    { credit: credit, debit: debit, balance: balance }
+    credit = sum { user_report.credit }
+    debit = sum { user_report.debit }
+
+    Balance.new(credit, debit)
+  end
+
+  private
+
+  def sum(&block)
+    Thread.new do
+      if block_given?
+        yield.sum(:total_value)
+      end
+    end.value
   end
 end
