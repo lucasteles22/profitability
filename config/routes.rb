@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   get "up" => "rails/health#show", as: :rails_health_check
 
   resources :reports, only: [ :create, :index ]
+  resource :balance, only: [ :show ]
 
   # Defines the root path route ("/")
   # root "posts#index"
