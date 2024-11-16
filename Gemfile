@@ -40,6 +40,7 @@ gem "devise-jwt", "~> 0.12.1"
 gem "rack-cors", "~> 2.0", ">= 2.0.2"
 
 gem "roo", "~> 2.10", ">= 2.10.1"
+gem "csv", "~> 3.3"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
