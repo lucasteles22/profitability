@@ -1,0 +1,6 @@
+Transferência - Liquidação -> Débito -> Venda (recebeu dinheiro)
+Transferência - Liquidação -> Crédito -> Compra (cedeu dinheiro)
+
+Dividendo - Crédito -> recebeu
+
+Rendimento - Crédito -> recebeu
