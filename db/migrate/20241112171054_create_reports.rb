@@ -14,6 +14,8 @@ class CreateReports < ActiveRecord::Migration[8.0]
       t.timestamps
     end
 
-    add_index :reports, [ :user_id, :kind, :report_date, :report_type, :product, :broker, :quantity ], unique: true
+    add_index :reports,
+      [ :user_id, :kind, :report_date, :report_type, :product, :broker, :quantity, :unit_price, :total_value ],
+      unique: true
   end
 end
