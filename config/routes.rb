@@ -12,6 +12,9 @@ Rails.application.routes.draw do
 
   resources :reports, only: [ :create, :index ]
   namespace :reports do
+    resource :stocks do
+      get "average-price", on: :member
+    end
     resources :dividends, only: [ :index ]
   end
   resource :balance, only: [ :show ]
