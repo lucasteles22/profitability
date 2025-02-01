@@ -15,7 +15,7 @@ class CreateTradings < ActiveRecord::Migration[8.0]
     end
 
     add_index :tradings,
-      [ :user_id, :kind, :trading_date, :market_type, :code, :broker, :quantity ],
+      [ :user_id, :kind, :trading_date, :market_type, :code, :broker, :quantity, :unit_price, :total_value ],
       unique: true
   end
 end

@@ -42,7 +42,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_01_200408) do
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id", "kind", "trading_date", "market_type", "code", "broker", "quantity"], name: "idx_on_user_id_kind_trading_date_market_type_code_b_f59391255d", unique: true
+    t.index ["user_id", "kind", "trading_date", "market_type", "code", "broker", "quantity", "unit_price", "total_value"], name: "idx_on_user_id_kind_trading_date_market_type_code_b_3d2c25e34b", unique: true
     t.index ["user_id"], name: "index_tradings_on_user_id"
   end
 
