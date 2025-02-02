@@ -1,10 +1,11 @@
-class Tradings::AveragePriceService
+clASs Tradings::AveragePriceService
   def initialize(current_user)
     @current_user = current_user
   end
 
   def call
     average_price = ActiveRecord::Base.connection.execute(query_avg_price)
+    position = ActiveRecord::Base.connection.execute(query_position)
     map_to_average_price(average_price)
   end
 
@@ -37,20 +38,20 @@ class Tradings::AveragePriceService
     SQL
   end
 
-  # def query_position
-  #   query = <<-SQL
-  #     WITH posicao AS (
-  #       SELECT rtrim(code, 'F') AS "code", SUM(CASE WHEN kind ILIKE '%compra%' THEN quantity ELSE -quantity END) AS "quantity"
-  #       FROM tradings
-  #       GROUP BY quantity, RTRIM(code, 'F')
-  #     )
-  #     SELECT posicao.code, SUM(posicao.quantity)
-  #     FROM posicao
-  #     GROUP BY posicao.code
-  #     HAVING SUM(posicao.quantity) > 0
-  #     ORDER BY posicao.code ASC;
-  #   SQL
-  # end
+  def query_position
+    query = <<-SQL
+      WITH posicao AS (
+        SELECT rtrim(code, 'F') AS "code", SUM(CASE WHEN kind ILIKE '%compra%' THEN quantity ELSE -quantity END) AS "quantity"
+        FROM tradings
+        GROUP BY quantity, RTRIM(code, 'F')
+      )
+      SELECT posicao.code, SUM(posicao.quantity)
+      FROM posicao
+      GROUP BY posicao.code
+      HAVING SUM(posicao.quantity) > 0
+      ORDER BY posicao.code ASC;
+    SQL
+  end
 
   def map_to_average_price(result)
     products = []

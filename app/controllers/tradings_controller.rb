@@ -7,11 +7,6 @@ class TradingsController < ActionController::API
     head :created
   end
 
-  def average_price
-    stocks = Tradings::AveragePriceService.new(current_user).()
-    render :average_price, locals: { stocks: stocks }
-  end
-
   private
 
   def create_params

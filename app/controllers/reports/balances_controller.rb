@@ -1,4 +1,4 @@
-class BalancesController < ActionController::API
+class Reports::BalancesController < ActionController::API
   before_action :authenticate_user!
 
   def show
