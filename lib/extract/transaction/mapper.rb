@@ -1,5 +1,5 @@
 module Extract
-  module Earning
+  module Transaction
     class Mapper
       ENTRADA_SAIDA  = 0
       DATA           = 1
@@ -10,11 +10,11 @@ module Extract
       PRECO_UNITARIO = 6
       VALOR_OPERACAO = 7
 
-      def self.to_report(row)
+      def self.to_transaction(row)
         {
           kind: row[ENTRADA_SAIDA].value,
-          report_date: row[DATA].value,
-          report_type: row[MOVIMENTACAO].value,
+          transaction_date: row[DATA].value,
+          transaction_type: row[MOVIMENTACAO].value,
           product: row[PRODUTO].value,
           broker: row[CORRETORA].value,
           quantity: row[QUANTIDADE].value,

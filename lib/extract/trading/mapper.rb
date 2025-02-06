@@ -10,7 +10,7 @@ module Extract
       UNIT_PRICE   = 7
       TOTAL_VALUE  = 8
 
-      def self.to_report(row)
+      def self.to_trading(row)
         {
           trading_date: row[TRADING_DATE].value,
           kind: row[KIND].value,

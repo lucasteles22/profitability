@@ -1,4 +1,4 @@
-class Report < ApplicationRecord
+class Transaction < ApplicationRecord
   belongs_to :user
 
   scope :debit, -> { where("kind = 'Debito'") }
@@ -6,5 +6,5 @@ class Report < ApplicationRecord
   scope :with_user, ->(user) { where(user: user) }
 
   # Rendimentos
-  scope :yield, -> { where ("report_type ilike '%rendimento%'") }
+  scope :yield, -> { where ("transaction_type ilike '%rendimento%'") }
 end

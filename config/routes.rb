@@ -18,9 +18,9 @@ Rails.application.routes.draw do
   #   get "average-price", on: :member
   # end
 
-  resources :reports, only: [ :create ]
-  namespace :reports do
-    resource :stocks do
+  resources :transactions, only: [ :create ]
+  namespace :transactions do
+    resource :stocks, only: [] do
       get "average-price", on: :member
     end
     resource :balance, only: [ :show ]

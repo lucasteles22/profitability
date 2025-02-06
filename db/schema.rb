@@ -14,22 +14,6 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_01_200408) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
-  create_table "reports", force: :cascade do |t|
-    t.string "kind", limit: 50, null: false
-    t.date "report_date", null: false
-    t.string "report_type", limit: 100, null: false
-    t.string "product", limit: 1000, null: false
-    t.string "broker", limit: 200, null: false
-    t.integer "quantity", null: false
-    t.decimal "unit_price", precision: 8, scale: 2, null: false
-    t.decimal "total_value", precision: 8, scale: 2, null: false
-    t.bigint "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id", "kind", "report_date", "report_type", "product", "broker", "quantity", "unit_price", "total_value"], name: "idx_on_user_id_kind_report_date_report_type_product_2febb4e2f3", unique: true
-    t.index ["user_id"], name: "index_reports_on_user_id"
-  end
-
   create_table "tradings", force: :cascade do |t|
     t.string "kind"
     t.date "trading_date"
@@ -46,6 +30,22 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_01_200408) do
     t.index ["user_id"], name: "index_tradings_on_user_id"
   end
 
+  create_table "transactions", force: :cascade do |t|
+    t.string "kind", limit: 50, null: false
+    t.date "transaction_date", null: false
+    t.string "transaction_type", limit: 100, null: false
+    t.string "product", limit: 1000, null: false
+    t.string "broker", limit: 200, null: false
+    t.integer "quantity", null: false
+    t.decimal "unit_price", precision: 8, scale: 2, null: false
+    t.decimal "total_value", precision: 8, scale: 2, null: false
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id", "kind", "transaction_date", "transaction_type", "product", "broker", "quantity", "unit_price", "total_value"], name: "idx_on_user_id_kind_transaction_date_transaction_ty_0d53b55bbe", unique: true
+    t.index ["user_id"], name: "index_transactions_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -60,6 +60,6 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_01_200408) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "reports", "users"
   add_foreign_key "tradings", "users"
+  add_foreign_key "transactions", "users"
 end

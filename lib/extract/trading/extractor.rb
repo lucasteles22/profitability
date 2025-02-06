@@ -8,7 +8,7 @@ module Extract
         tradings = []
 
         data.each_row_streaming(pad_cells: true, offset: 1) do |row|
-          tradings << Mapper.to_report(row).merge({ user_id: current_user_id })
+          tradings << Mapper.to_trading(row).merge({ user_id: current_user_id })
         end
 
         tradings

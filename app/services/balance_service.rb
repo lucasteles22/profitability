@@ -4,10 +4,10 @@ class BalanceService
   end
 
   def call
-    user_report = Report.with_user(@current_user)
+    user_transaction = Transaction.with_user(@current_user)
 
-    credit = sum { user_report.credit }
-    debit = sum { user_report.debit }
+    credit = sum { user_transaction.credit }
+    debit = sum { user_transaction.debit }
 
     Balance.new(credit, debit)
   end

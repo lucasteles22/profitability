@@ -1,9 +1,9 @@
-class CreateReports < ActiveRecord::Migration[8.0]
+class CreateTransactions < ActiveRecord::Migration[8.0]
   def change
-    create_table :reports do |t|
+    create_table :transactions do |t|
       t.string :kind, null: false, limit: 50
-      t.date :report_date, null: false
-      t.string :report_type, null: false, limit: 100
+      t.date :transaction_date, null: false
+      t.string :transaction_type, null: false, limit: 100
       t.string :product, null: false, limit: 1000
       t.string :broker, null: false, limit: 200
       t.integer :quantity, null: false
@@ -14,8 +14,8 @@ class CreateReports < ActiveRecord::Migration[8.0]
       t.timestamps
     end
 
-    add_index :reports,
-      [ :user_id, :kind, :report_date, :report_type, :product, :broker, :quantity, :unit_price, :total_value ],
+    add_index :transactions,
+      [ :user_id, :kind, :transaction_date, :transaction_type, :product, :broker, :quantity, :unit_price, :total_value ],
       unique: true
   end
 end
