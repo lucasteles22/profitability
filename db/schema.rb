@@ -37,8 +37,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_01_200408) do
     t.string "product", limit: 1000, null: false
     t.string "broker", limit: 200, null: false
     t.integer "quantity", null: false
-    t.decimal "unit_price", precision: 8, scale: 2, null: false
-    t.decimal "total_value", precision: 8, scale: 2, null: false
+    t.decimal "unit_price", null: false
+    t.decimal "total_value", null: false
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

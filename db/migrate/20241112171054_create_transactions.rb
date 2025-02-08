@@ -7,8 +7,8 @@ class CreateTransactions < ActiveRecord::Migration[8.0]
       t.string :product, null: false, limit: 1000
       t.string :broker, null: false, limit: 200
       t.integer :quantity, null: false
-      t.decimal :unit_price, null: false, precision: 8, scale: 2
-      t.decimal :total_value, null: false, precision: 8, scale: 2
+      t.decimal :unit_price, null: false
+      t.decimal :total_value, null: false
       t.references :user, foreign_key: true
 
       t.timestamps
